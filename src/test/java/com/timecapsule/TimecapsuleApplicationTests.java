@@ -2,7 +2,6 @@ package com.timecapsule;
 
 import com.timecapsule.mapper.UserMapper;
 import com.timecapsule.pojo.User;
-import com.timecapsule.tools.OpenPassword;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,6 @@ public class TimecapsuleApplicationTests {
     }
     @Test
     public void test1() throws SQLException, ClassNotFoundException {
-        new OpenPassword().buildOpenPassword();
+        userMapper.insert("93111","w1w1","w1w1");
     }
 }
