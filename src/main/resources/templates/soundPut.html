@@ -6,6 +6,7 @@
     <link href="/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="/bootstrap-3.3.7/js/jquery-3.3.1.min.js"></script>
     <script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/vue.js"></script>
 
 
 </head>
@@ -32,56 +33,142 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid" id="loginPage">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8" style="padding-left: 3.875rem;">
+        <div class="col-md-1"></div>
+        <div class="col-md-5" style="padding-left: 3.875rem;">
             <div class="row">
                 <h2 style="color:#555555;">添加胶囊</h2>
             </div>
-            <form enctype="multipart/form-data" id="soundForm">
+            <div class="row">
+                <div class="form-group">
+                    <label for="exampleInputName">你的名字：</label>
+                    <input type="text" class="form-control" id="exampleInputName" placeholder="name">
+                    <font id="error1" color="red"></font>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputNameCapsule">胶囊名：</label>
+                    <input type="text" class="form-control" id="exampleInputNameCapsule" placeholder="capsuleName">
+                    <font id="error2" color="red"></font>
+                </div>
+                <div class="form-group">
+                    <label id="email" for="exampleInputEmail1">接收邮箱：</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <font id="error3" color="red"></font>
+                </div>
+                <div class="form-group">
+                    <label for="date">打开时间:</label>
+                    <input type="date" class="form-control" id="date">
+                    <font id="error4" color="red"></font>
+                </div>
+                <div class="form-group">
+                    <label for="upload">选择声音：</label>
+                    <input type="file" id="upload" class="form-control">
+                    <font id="error5" color="red"></font>
+                </div>
+                <div class="form-group" id="audio">
+
+                </div>
                 <div class="row">
-                    <div class="form-group">
-                        <label for="exampleInputName">你的名字：</label>
-                        <input type="text" class="form-control" name="name" id="exampleInputName" placeholder="name">
-                        <font id="error1" color="red"></font>
+                    <div class="col-md-6">
+                        <input type="button" value="清空内容" class="btn btn-danger" id="clean">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputNameCapsule">胶囊名：</label>
-                        <input type="text" class="form-control" name="capsuleName" id="exampleInputNameCapsule" placeholder="capsuleName">
-                        <font id="error2" color="red"></font>
-                    </div>
-                    <div class="form-group">
-                        <label id="email" for="exampleInputEmail1">接收邮箱：</label>
-                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Email">
-                        <font id="error3" color="red"></font>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">打开时间:</label>
-                        <input type="date" class="form-control" name="openTime" id="date">
-                        <font id="error4" color="red"></font>
-                    </div>
-                    <div class="form-group">
-                        <label for="uploadSound">选择声音：</label>
-                        <input type="file" id="uploadSound" name="file" class="form-control">
-                        <font id="error5" color="red"></font>
-                    </div>
-                    <div class="form-group" id="audio">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input type="button" value="清空内容" class="btn btn-danger" id="clean">
-                        </div>
-                        <div class="col-md-6" style="text-align:right">
-                            <input type="button" value="添加胶囊" class="btn btn-primary" id="submitSound">
-                        </div>
+                    <div class="col-md-6" style="text-align:right">
+                        <input type="button" value="添加胶囊" class="btn btn-primary" id="submit">
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    var objURL;
+    $(document).on('change', '#upload', function () {
+        console.log(this.files[0]);
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjcectURL != undefined) {
+                url = window.createOjcectURL(file);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+        $("#error5").text("");
+        objURL = getObjectURL(this.files[0]);
+        console.log(objURL);
+        var audio = "<audio src="+objURL+" controls='controls' id='show' autoplay='autoplay'>"
+        $("#audio").html(audio);
+        // $('#imgContainer').html("<img src='" + objURL + "' alt='Alternate Text' width='640px' height='350px' id='target' />");
+    });
+
+    var clean = function () {
+        $("#exampleInputName").val("");
+        $("#exampleInputNameCapsule").val("");
+        $("#exampleInputEmail1").val("");
+        $("#date").val("");
+        $("#upload").val("");
+        $("#audio").html("");
+    }
+    $("#clean").click(clean);
+
+    $("#submit").click(function () {
+        var name = $("#exampleInputName").val();
+        var capsuleName = $("#exampleInputNameCapsule").val();
+        var email = $("#exampleInputEmail1").val();
+        var date = $("#date").val();
+        var file = $("#upload").val();
+        if (name==""){
+            $("#error1").text("请输入名字");
+        }else{
+            $("#error1").text("");
+        }
+        if (capsule==""){
+            $("#error2").text("请输入胶囊名");
+        }else{
+            $("#error2").text("");
+        }
+        if (email==""){
+            $("#error3").text("请输入接收的邮箱");
+        }else{
+            $("#error3").text("");
+        }
+        if (date==""){
+            $("#error4").text("请输入日期");
+        }else{
+            $("#error4").text("");
+        }
+        if (file==""){
+            $("#error5").text("请选择音频");
+        }
+        var sData = {
+            name:name,
+            capsuleName:capsuleName,
+            email:email,
+            date:date,
+            file:file
+        }
+        $.ajax({
+            url:'soundCapsulePut',
+            type:'post',
+            dataType:'json',
+            contentType : "application/json",
+            data: JSON.stringify(sData),
+            success:function (result) {
+                if (result.status==1){
+                    window.alert("上传成功！")
+                }else{
+                    window.alert("上传失败，请联系管理员")
+                }
+            },
+            fail:function () {
+                window.alert("上传失败，请联系管理员");
+            }
+        })
+    })
+</script>
 </body>
-<script src="/js/vue.js"></script>
-<script src="/js/soundPut.js"></script>
 </html>
