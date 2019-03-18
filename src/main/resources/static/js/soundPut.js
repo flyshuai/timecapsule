@@ -1,5 +1,5 @@
 var objURL;
-$(document).on('change', '#uploadSound', function () {
+$(document).on('change', '#upload', function () {
     console.log(this.files[0]);
 
     function getObjectURL(file) {
@@ -13,6 +13,7 @@ $(document).on('change', '#uploadSound', function () {
         }
         return url;
     }
+
     $("#error5").text("");
     objURL = getObjectURL(this.files[0]);
     var audio = "<audio src=" + objURL + " controls='controls' id='show' autoplay='autoplay'>"
@@ -25,17 +26,18 @@ var clean = function () {
     $("#exampleInputNameCapsule").val("");
     $("#exampleInputEmail1").val("");
     $("#date").val("");
-    $("#uploadSound").val("");
+    $("#upload").val("");
     $("#audio").html("");
+    $("#openPassword").val("");
 }
 $("#clean").click(clean);
 
-$("#submitSound").click(function () {
-    var file = $("#uploadSound").val();
+$("#submit").click(function () {
     var name = $("#exampleInputName").val();
     var capsuleName = $("#exampleInputNameCapsule").val();
     var email = $("#exampleInputEmail1").val();
     var date = $("#date").val();
+    var file = $("#upload").val();
     if (name == "") {
         $("#error1").text("请输入名字");
     } else {
@@ -58,31 +60,28 @@ $("#submitSound").click(function () {
     }
     if (file == "") {
         $("#error5").text("请选择音频");
-    }else{
-        $("#error5").text("");
     }
-    if (name!=""&&capsuleName!=""&&email!=""&&date!=""&&file!="") {
-        var formData = new FormData($("#soundForm")[0]);//此处id为form表单的id
-        $.ajax({
-            url: 'soundCapsulePut',
-            type: 'post',
-            // dataType: 'json',
-            contentType: false,
-            data: formData,
-            processData: false,
-            async: false,
-            cache: false,
-            success: function (result) {
-                if (result.status == 1) {
-                    window.alert("上传成功！");
-                    clean();
-                } else {
-                    window.alert("上传失败，请联系管理员")
-                }
-            },
-            fail: function () {
-                window.alert("上传失败，请联系管理员");
+
+    var formData = new FormData($("#soundForm")[0]);//此处id为form表单的id
+    $.ajax({
+        url: 'soundCapsulePut',
+        type: 'post',
+        // dataType: 'json',
+        contentType: false,
+        data: formData,
+        processData: false,
+        async: false,
+        cache: false,
+        success: function (result) {
+            if (result.status == 1) {
+                window.alert("上传成功！");
+                clean();
+            } else {
+                window.alert("上传失败，请联系管理员")
             }
-        })
-    }
+        },
+        fail: function () {
+            window.alert("上传失败，请联系管理员");
+        }
+    })
 })

@@ -18,14 +18,7 @@
             #{capsuleOpenTime},#{openPassword},#{name},#{userId},#{email})
     </insert>
 
-    <insert id="insertMovieCapsule" parameterType="Capsule">
-            INSERT
-            into
-            capsule(capsuleName,capsulePath,capsuleTypeId,capsuleUploadTime,
-            capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email)
-            values(#{capsuleName},#{capsulePath},#{capsuleTypeId},#{capsuleUploadTime},
-            #{capsuleOpenTime},#{openPassword},#{name},#{userId},#{email})
-    </insert>
-
-
+    <!--<select id="findUserByEmailAndPassword" resultType="User">-->
+        <!--select userId,email,password,userName from USER where email = #{email} and password = #{password}-->
+    <!--</select>-->
 </mapper>
