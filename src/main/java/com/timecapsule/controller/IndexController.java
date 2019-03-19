@@ -12,7 +12,7 @@ public class IndexController {
 	@RequestMapping("hello")
 	@ResponseBody
     public String hello(){
-        return "put";
+        return "hello1";
     }
 	
     @RequestMapping("put")
