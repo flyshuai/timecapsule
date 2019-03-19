@@ -25,12 +25,12 @@ public class LoginController {
 	UserService userService;
 	
 
-	@RequestMapping("send_mail")
+	@RequestMapping("getIdentifyCode")
 	@ResponseBody
-	public JsonResult<String> sendMail(String email) throws Exception {
+	public JsonResult<String> getIdentifyCode(String email) throws Exception {
 		jsonResult.setStatus(1);
 		jsonResult.setMsg("success");
-		jsonResult.setResultData(userService.sendMail(email));
+		jsonResult.setResultData(userService.getIdentifyCode(email));
 		return jsonResult;
 	}
 

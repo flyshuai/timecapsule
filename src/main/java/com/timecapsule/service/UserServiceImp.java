@@ -29,7 +29,7 @@ public class UserServiceImp implements UserService{
         return userMapper.insert(email,password,userName);
     }
 
-	public String sendMail(String email) {
+	public String getIdentifyCode(String email) {
 		String verificationCode = String.valueOf(((int) ((Math.random() * 9001)) + 999));
 		SimpleMailMessage message = new SimpleMailMessage();
 
