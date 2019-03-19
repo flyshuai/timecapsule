@@ -10,14 +10,12 @@ public class CapsuleServiceImp implements CapsuleService {
 
     @Autowired
     CapsuleMapper capsuleMapper;
-    @Override
+    
     public int insertSoundCapsule(Capsule capsule) {
-
         return capsuleMapper.insertSoundCapsule(capsule);
 
     }
 
-    @Override
     public int insertMovieCapsule(Capsule capsule) {
         return capsuleMapper.insertMovieCapsule(capsule);
     }
