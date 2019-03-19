@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>时间胶囊</title>
+		<link href="/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<script src="/bootstrap-3.3.7/js/jquery-3.3.1.min.js"></script>
+		<!-- <script src="js/vue.js"></script> -->
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script src="/js/vue.js"></script>
+		<script src="/js/login.js"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-5">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="#">
+								<img src="/img/胶囊%20(2).png" style="margin-top: -0.975rem;display: inline-block;">
+								<font style="">时光胶囊</font>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-3" style="margin-top: 1.75rem; text-align: right;">
+						<!--<a style="text-decoration: none;color: #5E5E5E;font-size: 1.55rem;" href="#" id="register" @click.prevent="changeToLogin">登录</a>-->
+						<!--&nbsp;&nbsp;&nbsp;-->
+						<!--<a style="text-decoration: none;color: #5E5E5E;font-size: 1.55rem;" href="#" id="login" @click.prevent="changeToRegister">注册</a>-->
+						<span style="color: #5E5E5E;font-size: 1.55rem;cursor: pointer" id="login">登录</span>
+                        &nbsp;&nbsp;&nbsp;
+						<span style="color: #5E5E5E;font-size: 1.55rem;cursor: pointer" id="register">注册</span>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid" id="loginPage">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-3" style="padding-left: 3.875rem;">
+					<div class="row">
+						<h2 style="color:#555555;">登录</h2>
+					</div>
+					<div class="row">
+						<form>
+							<div class="form-group">
+								<label id="email" for="exampleInputEmail1">邮箱：</label>
+								<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+								<font id="error" color="red"></font>
+							</div>
+							<div class="form-group">
+								<label id="password" for="exampleInputPassword1">密码：</label>
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+								<font id="error2" color="red"></font>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox"> 记住我
+								</label>
+							</div>
+							<input id="loginButton" type="button" class="btn btn-default" value="登录">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid" id="registerPage" style="display: none;">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-3" style="padding-left: 3.875rem;">
+					<div class="row">
+						<h2 style="color:#555555;">注册</h2>
+					</div>
+					<div class="row">
+						<form>
+							<div class="form-group">
+								<label id="name" for="name">名字：</label>
+								<input type="text" class="form-control" id="nameR" placeholder="name">
+								<font id="error6" color="red"></font>
+							</div>
+							<div class="form-group">
+								<label id="email2" for="exampleInputEmail2">邮箱：</label>
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
+								<font id="error3" color="red"></font>
+							</div>
+							<div class="form-group">
+								<label id="password2" for="exampleInputPassword2">密码：</label>
+								<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+								<font id="error4" color="red"></font>
+							</div>
+							<div class="form-group">
+								<label id="password3" for="exampleInputPassword3">确认密码：</label>
+								<input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+								<font id="error5" color="red"></font>
+							</div>
+							<input id="registerButton" type="button" class="btn btn-default" value="注册">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="background-color:#B9DEF0;text-align: center;margin-top: 7.75rem;height: 100px;">
+			<!-- <div class="col-md-1"></div> -->
+			<div class="col-md-5" style="margin-left: 7.575rem; margin-top: 2.8875rem;">
+				<font style="font-size: 1.65rem;">|&nbsp;&nbsp;时光胶囊&nbsp;&nbsp;|&nbsp;&nbsp;重庆师范大学计算机与信息科学学院彭飞翔&nbsp;&nbsp;|&nbsp;&nbsp;2019</font>
+			</div>
+		</div>
+	</body>
+</html>

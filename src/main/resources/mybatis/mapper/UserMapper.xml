@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace是命名空间，是mapper接口的全路径-->
+<mapper namespace="com.timecapsule.mapper.UserMapper">
+
+    <!--resultMap – 是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象-->
+    <!--<resultMap id="userResultMap" type="com.hello.springboot.entity.User">-->
+    <!--<id property="name" column="username"></id>-->
+    <!--</resultMap>-->
+
+
+    <insert id="insert" >
+        insert into user(userName,email,password) values(#{userName},#{email},#{password})
+    </insert>
+    <select id="findUserByEmailAndPassword" resultType="User">
+        select userId,email,password,userName from USER where email = #{email} and password = #{password}
+    </select>
+</mapper>
