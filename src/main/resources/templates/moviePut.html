@@ -32,8 +32,8 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8" style="padding-left: 3.875rem;">
+        <div class="col-md-1"></div>
+        <div class="col-md-5" style="padding-left: 3.875rem;">
             <div class="row">
                 <h2 style="color:#555555;">添加胶囊</h2>
             </div>
@@ -64,8 +64,7 @@
                         <input type="file" id="uploadMovie" name="file" class="form-control">
                         <font id="error5" color="red"></font>
                     </div>
-                    <div class="form-group" id="movie">
-                    </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <input type="button" value="清空内容" class="btn btn-danger" id="cleanMovie">
@@ -77,12 +76,27 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <div class="row" style="margin-top: 30px">
+                    <h3>注意事项：</h3>
+                    <h5>1.只能上传低于500M的视频，超过500M的视频无法上传。</h5>
+                    <h5>2.上传mp4,ogg,webm时能够正常显示预览。三种之外的视频格式可以
+                        <br><br>&nbsp;&nbsp;&nbsp;正常上传与未来正常打开，但是无法预览。</h5>
+            </div>
+            <div class="row" style="padding-top: 20px">
+                <div id="movie">
+                    <div class="flowplayer" data-swf="flowplayer.swf" data-ratio="0.4167">
+                        <video>
+                            <source type="video/mp4" src="录像31.avi">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
-<!--<script src="/js/vue.js"></script>-->
 <script src="/js/moviePut.js"></script>
-<script>
-
-</script>
+<script src="/static/flowplayer20160415/flowplayer.min.js"></script>
 </html>

@@ -16,9 +16,8 @@ $(document).on('change', '#uploadMovie', function () {
 
     $("#error5").text("");
     objURL = getObjectURL(this.files[0]);
-    // var audio = "<audio src=" + objURL + " controls='controls' id='show' autoplay='autoplay'>"
-    // $("#audio").html(audio);
-    // $('#imgContainer').html("<img src='" + objURL + "' alt='Alternate Text' width='640px' height='350px' id='target' />");
+    var movie = "<video src=" + objURL + " controls='controls' id='show' autoplay='autoplay' height='200px' width='400px'>"
+    $("#movie").html(movie);
 });
 
 var clean = function () {
