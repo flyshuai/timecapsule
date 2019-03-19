@@ -16,4 +16,10 @@ public class CapsuleServiceImp implements CapsuleService {
         return capsuleMapper.insertSoundCapsule(capsule);
 
     }
+
+    @Override
+    public int insertMovieCapsule(Capsule capsule) {
+        return capsuleMapper.insertMovieCapsule(capsule);
+    }
+
 }

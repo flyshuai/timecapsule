@@ -1,5 +1,5 @@
 var objURL;
-$(document).on('change', '#upload', function () {
+$(document).on('change', '#uploadSound', function () {
     console.log(this.files[0]);
 
     function getObjectURL(file) {
@@ -13,7 +13,6 @@ $(document).on('change', '#upload', function () {
         }
         return url;
     }
-
     $("#error5").text("");
     objURL = getObjectURL(this.files[0]);
     var audio = "<audio src=" + objURL + " controls='controls' id='show' autoplay='autoplay'>"
@@ -26,18 +25,17 @@ var clean = function () {
     $("#exampleInputNameCapsule").val("");
     $("#exampleInputEmail1").val("");
     $("#date").val("");
-    $("#upload").val("");
+    $("#uploadSound").val("");
     $("#audio").html("");
-    $("#openPassword").val("");
 }
 $("#clean").click(clean);
 
-$("#submit").click(function () {
+$("#submitSound").click(function () {
+    var file = $("#uploadSound").val();
     var name = $("#exampleInputName").val();
     var capsuleName = $("#exampleInputNameCapsule").val();
     var email = $("#exampleInputEmail1").val();
     var date = $("#date").val();
-    var file = $("#upload").val();
     if (name == "") {
         $("#error1").text("请输入名字");
     } else {
@@ -60,28 +58,31 @@ $("#submit").click(function () {
     }
     if (file == "") {
         $("#error5").text("请选择音频");
+    }else{
+        $("#error5").text("");
     }
-
-    var formData = new FormData($("#soundForm")[0]);//此处id为form表单的id
-    $.ajax({
-        url: 'soundCapsulePut',
-        type: 'post',
-        // dataType: 'json',
-        contentType: false,
-        data: formData,
-        processData: false,
-        async: false,
-        cache: false,
-        success: function (result) {
-            if (result.status == 1) {
-                window.alert("上传成功！");
-                clean();
-            } else {
-                window.alert("上传失败，请联系管理员")
+    if (name!=""&&capsuleName!=""&&email!=""&&date!=""&&file!="") {
+        var formData = new FormData($("#soundForm")[0]);//此处id为form表单的id
+        $.ajax({
+            url: 'soundCapsulePut',
+            type: 'post',
+            // dataType: 'json',
+            contentType: false,
+            data: formData,
+            processData: false,
+            async: false,
+            cache: false,
+            success: function (result) {
+                if (result.status == 1) {
+                    window.alert("上传成功！");
+                    clean();
+                } else {
+                    window.alert("上传失败，请联系管理员")
+                }
+            },
+            fail: function () {
+                window.alert("上传失败，请联系管理员");
             }
-        },
-        fail: function () {
-            window.alert("上传失败，请联系管理员");
-        }
-    })
+        })
+    }
 })

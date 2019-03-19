@@ -26,4 +26,9 @@ public class IndexController {
     public String soundPut(){
         return "soundPut";
     }
+
+    @RequestMapping("moviePut")
+    public String moviePut(){
+        return "moviePut";
+    }
 }
