@@ -83,7 +83,8 @@ $(document).ready(function () {
 })
 
 var getIndentify = function(){
-    var email = $("#exampleInputEmail1").val();
+    var email = $("#exampleInputEmail2").val();
+    console.log(email);
     $.ajax({
         url:'/getIndentifyCode',
         type:'post',
@@ -98,11 +99,14 @@ var getIndentify = function(){
         }
     })
 }
-$("#getIdentifyCode").click(function () {
-    getIndentify();
-})
+
+
 
 $(document).ready(function () {
+    $("#getIdentifyCode").click(function () {
+        console.log("wwwwwwww");
+        getIndentify();
+    })
     $("#cleanButton").click(function () {
         console.log("wwwwwwww");
         $("#nameR").val("");
@@ -111,7 +115,6 @@ $(document).ready(function () {
         $("#exampleInputPassword3").val("");
         $("#identifyCode").val("");
     });
-    $("#getIdentifyCode").click();
 })
 
 //登录按钮的事件
