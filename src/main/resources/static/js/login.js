@@ -84,31 +84,36 @@ $(document).ready(function () {
 
 var getIndentify = function(){
     var email = $("#exampleInputEmail2").val();
-    console.log(email);
-    $.ajax({
-        url:'/getIndentifyCode',
-        type:'post',
-        dataType:'json',
-        contentType:"application/json",
-        data:JSON.stringify(email),
-        success:function (result) {
-            if (result.status== 1){
-                window.alert("验证码发送成功，快去邮箱查看吧!");
-                var_identifyCode = result.resultData;
+    if (testEmail(email)) {
+        $.ajax({
+            url:'/getIndentifyCode',
+            type:'post',
+            dataType:'json',
+            contentType:"application/json",
+            data:JSON.stringify(email),
+            success:function (result) {
+                if (result.status== 1){
+                    window.alert("验证码发送成功，快去邮箱查看吧!");
+                    var_identifyCode = result.resultData;
+                }
             }
-        }
-    })
+        })
+    }else {
+        $("#error3").text("请输入正确的邮箱格式");
+    }
+    console.log(email);
+
 }
 
 
 
 $(document).ready(function () {
     $("#getIdentifyCode").click(function () {
-        console.log("wwwwwwww");
+        console.log("邮箱验证请求");
         getIndentify();
     })
     $("#cleanButton").click(function () {
-        console.log("wwwwwwww");
+        console.log("清空按钮");
         $("#nameR").val("");
         $("#exampleInputEmail2").val("");
         $("#exampleInputPassword2").val("");
@@ -124,7 +129,9 @@ $(document).ready(function() {
         var password = $("#exampleInputPassword1").val();
         if ( email == "") {
             $("#error").text("请输入邮箱");
-        } else {
+        } else if (!testEmail(email)) {
+            $("#error").text("请输入正确的邮箱格式");
+        }else{
             $("#error").text("");
         }
         if ( password == "") {
