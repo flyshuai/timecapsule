@@ -11,5 +11,9 @@ public class OpenController {
     public String toOpen(){
         return "open";
     }
+    @RequestMapping("toOpenMovie")
+    public String toOpenMovie(){
+        return "openMovie";
+    }
 
 }

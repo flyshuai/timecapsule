@@ -40,8 +40,6 @@ public class UserServiceImp implements UserService{
 		message.setSubject("主题：验证邮件");
 
 		message.setText(verificationCode);
-		System.out.println(message.toString());
-//		System.out.println("mailSender:" + mailSender.toString());
 		mailSender.send(message);
 		return verificationCode;
 	}

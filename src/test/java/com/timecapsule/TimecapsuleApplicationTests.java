@@ -26,6 +26,6 @@ public class TimecapsuleApplicationTests {
     }
     @Test
     public void test1() throws SQLException, ClassNotFoundException {
-        new OpenPassword().buildOpenPassword();
+       System.out.println(userMapper.find(1).toString());
     }
 }

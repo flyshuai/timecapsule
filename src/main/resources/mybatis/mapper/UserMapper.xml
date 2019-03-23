@@ -16,4 +16,8 @@
     <select id="findUserByEmailAndPassword" resultType="User">
         select userId,email,password,userName from USER where email = #{email} and password = #{password}
     </select>
+
+    <select id="find" resultType="map">
+        select * from type ;
+    </select>
 </mapper>

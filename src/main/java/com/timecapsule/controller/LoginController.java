@@ -24,11 +24,22 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 
+	@RequestMapping("toLoginN")
+	public String loginN(){
+		return "loginN";
+	}
+
+	@RequestMapping("toRegister")
+	public String register(){
+		return "register";
+	}
 
 	@PostMapping("getIndentifyCode")
 	@ResponseBody
 	public JsonResult<String> getIdentifyCode(@RequestBody String email) throws Exception {
 		System.out.println(email);
+		long beginTime = System.currentTimeMillis();
+		System.out.println("发送邮件开始------"+beginTime);
 		String identifyCode = userService.getIdentifyCode(email);
 		if(identifyCode !=null){
             jsonResult.setStatus(1);
@@ -38,6 +49,9 @@ public class LoginController {
             jsonResult.setStatus(0);
             jsonResult.setMsg("fail");
         }
+		long endTime = System.currentTimeMillis();
+		System.out.println("发送邮件结束------"+endTime);
+		System.out.println("用时------"+(endTime-beginTime)+"毫秒");
 		return jsonResult;
 	}
 
