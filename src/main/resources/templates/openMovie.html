@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <video src="https://static.pingendo.com/video-placeholder.mp4" class="embed-responsive-item"
+                    <video class="embed-responsive-item" th:src="@{/openMovie}"
                            controls="controls"> Your browser does not support HTML5 video.
                     </video>
                 </div>

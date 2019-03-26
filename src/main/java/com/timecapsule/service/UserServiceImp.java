@@ -18,29 +18,29 @@ public class UserServiceImp implements UserService{
 
     public User loginValidate(String email, String password) {
         User user = userMapper.findUserByEmailAndPassword(email,password);
-        if (user == null){
-            return null;
-        }else{
-            return user;
-        }
+        return user;
     }
 
     public int userInsert(String email,String password,String userName) {
-        return userMapper.insert(email,password,userName);
+        if (userMapper.findUserByEmail(email)==null){
+            return userMapper.insert(email,password,userName);
+        }else {
+            return 0;
+        }
     }
 
-	public String getIdentifyCode(String email) {
-		String verificationCode = String.valueOf(((int) ((Math.random() * 9001)) + 999));
-		SimpleMailMessage message = new SimpleMailMessage();
-
-		message.setFrom("914423648@qq.com");
-
-		message.setTo(email);
-
-		message.setSubject("主题：验证邮件");
-
-		message.setText(verificationCode);
-		mailSender.send(message);
-		return verificationCode;
-	}
+//	public String getIdentifyCode(String email) {
+//		String verificationCode = String.valueOf(((int) ((Math.random() * 9001)) + 999));
+//		SimpleMailMessage message = new SimpleMailMessage();
+//
+//		message.setFrom("914423648@qq.com");
+//
+//		message.setTo(email);
+//
+//		message.setSubject("主题：验证邮件");
+//
+//		message.setText(verificationCode);
+//		mailSender.send(message);
+//		return verificationCode;
+//	}
 }

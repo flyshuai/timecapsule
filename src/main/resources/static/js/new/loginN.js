@@ -2,7 +2,6 @@
 //登录按钮的事件
 $(document).ready(function() {
     $("#loginButton").click(function() {
-        console.log("开始登录--------")
         var email = $("#exampleInputEmail1").val();
         var password = $("#exampleInputPassword1").val();
         if ( email == "") {
@@ -22,6 +21,7 @@ $(document).ready(function() {
                 email: email,
                 password: password
             };
+            console.log("开始登录--------")
             $.ajax({
                 url: "/login",
                 type: 'post',

@@ -20,4 +20,8 @@
     <select id="find" resultType="map">
         select * from type ;
     </select>
+
+    <select id="findUserByEmail" resultType="User">
+        select userId,email,password,userName from USER where email = #{email}
+    </select>
 </mapper>

@@ -5,6 +5,8 @@ import com.timecapsule.pojo.Capsule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service("CapsuleService")
 public class CapsuleServiceImp implements CapsuleService {
 
@@ -20,6 +22,11 @@ public class CapsuleServiceImp implements CapsuleService {
     @Override
     public int insertMovieCapsule(Capsule capsule) {
         return capsuleMapper.insertMovieCapsule(capsule);
+    }
+
+    @Override
+    public Capsule findCapsuleByOpenPassword(String openPassword, String date) {
+        return capsuleMapper.findCapsuleByOpenPasswod(openPassword,date);
     }
 
 }

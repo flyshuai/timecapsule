@@ -86,6 +86,7 @@ var getIndentify = function(){
     var email = $("#exampleInputEmail2").val();
     if (testEmail(email)) {
         $.ajax({
+            async:true,
             url:'/getIndentifyCode',
             type:'post',
             dataType:'json',
@@ -93,16 +94,16 @@ var getIndentify = function(){
             data:JSON.stringify(email),
             success:function (result) {
                 if (result.status== 1){
-                    window.alert("验证码发送成功，快去邮箱查看吧!");
                     var_identifyCode = result.resultData;
                 }
             }
         })
+        $("#error3").text("");
+        window.alert("验证码发送成功，快去邮箱查看吧!");
     }else {
         $("#error3").text("请输入正确的邮箱格式");
     }
     console.log(email);
-
 }
 
 

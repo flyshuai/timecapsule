@@ -5,17 +5,27 @@
 <mapper namespace="com.timecapsule.mapper.CapsuleMapper">
 
     <!--resultMap – 是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象-->
-    <!--<resultMap id="userResultMap" type="com.hello.springboot.entity.User">-->
-    <!--<id property="name" column="username"></id>-->
-    <!--</resultMap>-->
+    <resultMap id="capsule" type="com.timecapsule.pojo.Capsule">
+        <id property="capsuleName" column="capsuleName"></id>
+        <id property="capsulePath" column="capsulePath"></id>
+        <id property="capsuleTypeId" column="capsuleTypeId"></id>
+        <id property="capsuleUploadTime" column="capsuleUploadTime"></id>
+        <id property="capsuleOpenTime" column="capsuleOpenTime"></id>
+        <id property="capsuleOpenPassword" column="capsuleOpenPassword"></id>
+        <id property="name" column="userNameCapsule"></id>
+        <id property="userId" column="userId"></id>
+        <id property="email" column="email"></id>
+        <id property="putUserName" column="putUserName"></id>
+        <id property="capsuleId" column="capsuleId"></id>
+    </resultMap>
 
     <insert id="insertSoundCapsule" parameterType="Capsule">
             INSERT
             into
             capsule(capsuleName,capsulePath,capsuleTypeId,capsuleUploadTime,
-            capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email)
+            capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email,putUserName)
             values(#{capsuleName},#{capsulePath},#{capsuleTypeId},#{capsuleUploadTime},
-            #{capsuleOpenTime},#{openPassword},#{name},#{userId},#{email})
+            #{capsuleOpenTime},#{openPassword},#{name},#{userId},#{email},#{putUserName})
     </insert>
 
     <insert id="insertMovieCapsule" parameterType="Capsule">
@@ -27,5 +37,14 @@
             #{capsuleOpenTime},#{openPassword},#{name},#{userId},#{email})
     </insert>
 
+    <select id="findTimedCapsule" resultType="map">
+        select * from capsule where capsuleOpenTime = #{nowDate}
+    </select>
 
+    <select id="findCapsuleByOpenPasswod" resultMap="capsule">
+        select capsuleId,capsuleName,capsulePath,capsuleTypeId,capsuleUploadTime,
+            capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email,putUserName
+            from capsule where capsuleOpenPassword = #{openPassword}
+            AND capsuleOpenTime &lt;= #{date}
+    </select>
 </mapper>

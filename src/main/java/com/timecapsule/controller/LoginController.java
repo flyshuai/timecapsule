@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.timecapsule.tools.EmailTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,13 +27,16 @@ public class LoginController {
 
 	@RequestMapping("toLoginN")
 	public String loginN(){
-		return "loginN";
+		return "new/loginN";
 	}
 
 	@RequestMapping("toRegister")
 	public String register(){
-		return "register";
+		return "new/register";
 	}
+
+	@Autowired
+	public EmailTool emailTool;
 
 	@PostMapping("getIndentifyCode")
 	@ResponseBody
@@ -40,7 +44,8 @@ public class LoginController {
 		System.out.println(email);
 		long beginTime = System.currentTimeMillis();
 		System.out.println("发送邮件开始------"+beginTime);
-		String identifyCode = userService.getIdentifyCode(email);
+//		String identifyCode = userService.getIdentifyCode(email);
+		String identifyCode = emailTool.getIdentifyCode(email);
 		if(identifyCode !=null){
             jsonResult.setStatus(1);
             jsonResult.setMsg("success");
@@ -65,6 +70,7 @@ public class LoginController {
 	public JsonResult<Integer> login(@RequestBody Map<String, String> map, HttpServletRequest request) {
 		String email = map.get("email");
 		String password = map.get("password");
+		System.out.println("开始登录验证---------"+email);
 		User user = userService.loginValidate(email, password);
 		if (user == null) {
 			jsonResult.setStatus(0);
@@ -73,6 +79,7 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 		}
+		System.out.println("登录验证结束---------"+email);
 		return jsonResult;
 	}
 

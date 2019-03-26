@@ -17,6 +17,16 @@ public class Capsule {
     private int userId;
     private String email;
 
+    public String getPutUserName() {
+        return putUserName;
+    }
+
+    public void setPutUserName(String putUserName) {
+        this.putUserName = putUserName;
+    }
+
+    private String putUserName;
+
     public String getEmail() {
         return email;
     }
