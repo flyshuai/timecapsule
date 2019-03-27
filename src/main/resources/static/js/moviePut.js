@@ -13,10 +13,10 @@ $(document).on('change', '#uploadMovie', function () {
         }
         return url;
     }
-
     $("#error5").text("");
     objURL = getObjectURL(this.files[0]);
-    var movie = "<video src=" + objURL + " controls='controls' id='show' autoplay='autoplay' height='200px' width='400px'>"
+    console.log(objURL);
+    var movie = "<video src=" + objURL + " controls='controls' id='show' autoplay='autoplay' height='200px' width='400px'>";
     $("#movie").html(movie);
 });
 

@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <video class="embed-responsive-item" th:src="@{/openMovie}"
+                    <video class="embed-responsive-item" th:src="${session.path}"
                            controls="controls"> Your browser does not support HTML5 video.
                     </video>
                 </div>
@@ -32,6 +32,18 @@
         </div>
     </div>
 </div>
+    <script th:inline="javascript">
+
+    /*<![CDATA[*/
+
+    var xx=/*[[${session.path}]]*/   --获取session中的值
+
+
+    /*]]>*/
+        console.log(xx);
+
+</script>
+
 </body>
 
 </html>

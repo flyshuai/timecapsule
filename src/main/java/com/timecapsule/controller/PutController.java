@@ -77,6 +77,7 @@ public class PutController {
         capsule.setName(request.getParameter("name"));
         capsule.setEmail(request.getParameter("email"));
         capsule.setUserId(user.getUserId());
+        capsule.setPutUserName(user.getUserName());
         capsule.setCapsuleOpenTime(request.getParameter("openTime"));
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");//格式都为2019-03-18

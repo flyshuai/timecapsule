@@ -11,7 +11,7 @@
         <id property="capsuleTypeId" column="capsuleTypeId"></id>
         <id property="capsuleUploadTime" column="capsuleUploadTime"></id>
         <id property="capsuleOpenTime" column="capsuleOpenTime"></id>
-        <id property="capsuleOpenPassword" column="capsuleOpenPassword"></id>
+        <id property="openPassword" column="capsuleOpenPassword"></id>
         <id property="name" column="userNameCapsule"></id>
         <id property="userId" column="userId"></id>
         <id property="email" column="email"></id>

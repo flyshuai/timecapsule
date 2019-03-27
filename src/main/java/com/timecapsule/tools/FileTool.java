@@ -15,11 +15,13 @@ public class FileTool {
         //file.getOriginalFilename()获取上传文件名
         String fileName = file.getOriginalFilename();
         //获取根目录
-        File path = new File(ResourceUtils.getURL("classpath:").getPath());
+        File path = new File(ResourceUtils.getURL("classpath:static/").getPath());
+        System.out.println(path);
         if(!path.exists()) path = new File("");
         System.out.println("path:"+path.getAbsolutePath());
         //如果上传目录为/upload/（与static同级），则可以如下获取：
         File upload = new File(path.getAbsolutePath(),"upload/"+user.getUserId()+"/"+System.currentTimeMillis()+"/");
+        System.out.println(upload);
         if(!upload.exists()) upload.mkdirs();
         file.transferTo(new File(upload,"/"+fileName));
         System.out.println("upload url:"+upload.getAbsolutePath());
