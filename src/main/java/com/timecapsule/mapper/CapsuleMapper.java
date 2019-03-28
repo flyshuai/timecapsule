@@ -11,7 +11,7 @@ public interface CapsuleMapper {
     public int insertSoundCapsule(Capsule capsule);
     public int insertMovieCapsule(Capsule capsule);
     //定时任务执行查询到开启时间的胶囊
-    public List<Map<String,String>> findTimedCapsule(String nowDate);
+    public List<Map<String,Object>> findTimedCapsule(String nowDate);
 
     public Capsule findCapsuleByOpenPasswod(String openPassword,String date);
 }

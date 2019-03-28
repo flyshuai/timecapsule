@@ -43,7 +43,7 @@
 
     <select id="findCapsuleByOpenPasswod" resultMap="capsule">
         select capsuleId,capsuleName,capsulePath,capsuleTypeId,capsuleUploadTime,
-            capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email,putUserName
+        DATE_FORMAT(capsuleOpenTime ,'%Y-%m-%d') AS capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email,putUserName
             from capsule where capsuleOpenPassword = #{openPassword}
             AND capsuleOpenTime &lt;= #{date}
     </select>
