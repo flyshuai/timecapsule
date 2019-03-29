@@ -34,22 +34,23 @@ public class OpenController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Capsule capsule = capsuleService.findCapsuleByOpenPassword(openPassword, simpleDateFormat.format(date));
         HttpSession session = request.getSession();
-        String [] str = capsule.getCapsulePath().split("static");
-        System.out.println(str[0]+"=="+str[1]);
-        session.setAttribute("path",str[1]);
         if (capsule != null) {
+            String path = capsule.getCapsulePath();
             int type = (int) capsule.getCapsuleTypeId();
             if (type == 1) {
-                return "index";
+                session.setAttribute("content",path);
+                return "openText";
             }
             if (type == 2) {
-                String path = capsule.getCapsulePath();
-                System.out.println(path);
+                String [] str = capsule.getCapsulePath().split("static");
+                System.out.println(str[0]+"=="+str[1]);
+                session.setAttribute("path",str[1]);
                 return "openSound";
             }
             if (type == 3) {
-                String path = capsule.getCapsulePath();
-                System.out.println(path);
+                String [] str = capsule.getCapsulePath().split("static");
+                System.out.println(str[0]+"=="+str[1]);
+                session.setAttribute("path",str[1]);
                 return "openMovie";
             }
         }
