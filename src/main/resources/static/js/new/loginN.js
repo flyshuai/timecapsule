@@ -9,12 +9,12 @@ $(document).ready(function() {
         } else if (!testEmail(email)) {
             $("#error").html("请输入正确的邮箱格式<span class='badge badge-pill badge-warning'>!</span>");
         }else{
-            $("#error").text("");
+            $("#error").html("");
         }
         if ( password == "") {
-            $("#error2").text("请输入密码");
+            $("#error2").html("请输入密码<span class='badge badge-pill badge-warning'>!</span>");
         } else {
-            $("#error2").text("");
+            $("#error2").html("");
         }
         if ( email != "" && password != "") {
             var sData = {

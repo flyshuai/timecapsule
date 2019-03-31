@@ -45,6 +45,6 @@
         select capsuleId,capsuleName,capsulePath,capsuleTypeId,capsuleUploadTime,
         DATE_FORMAT(capsuleOpenTime ,'%Y-%m-%d') AS capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email,putUserName
             from capsule where capsuleOpenPassword = #{openPassword}
-            AND capsuleOpenTime &lt;= #{date}
+            AND capsuleOpenTime = #{date}
     </select>
 </mapper>
