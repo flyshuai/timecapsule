@@ -1,8 +1,10 @@
 package com.timecapsule.controller;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.timecapsule.tools.EmailTool;
@@ -60,10 +62,6 @@ public class LoginController {
 		return jsonResult;
 	}
 
-	@RequestMapping("toLogin")
-	public String toLogin() {
-		return "login";
-	}
 
 	@PostMapping("login")
 	@ResponseBody
@@ -98,9 +96,9 @@ public class LoginController {
 	}
 
 	@RequestMapping("loginOut")
-	public String logOut(HttpServletRequest request){
+	public void logOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
-		return "new/loginN";
+//		response.sendRedirect(request.getContextPath()+"/toLoginN");
 	}
 }

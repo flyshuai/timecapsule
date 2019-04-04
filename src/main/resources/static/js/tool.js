@@ -15,10 +15,12 @@ function testEmail(email) {
 function loginOut() {
     $.ajax({
         url:'/loginOut',
+        async: true,
         success:function () {
             console.log("成功退出");
         }
     })
+    location.href = "/toLoginN";
 }
 
 //返回主页
@@ -26,7 +28,7 @@ function toIndex() {
     $.ajax({
         url:'/toIndex',
         success:function () {
-            // console.log("成功退出");
+            location.href = "/toIndex";
         }
     })
 }
