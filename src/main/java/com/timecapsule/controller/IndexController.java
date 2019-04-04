@@ -9,26 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
     @RequestMapping("put")
     public String put(){
-        return "put";
+        return "put/put";
     }
 
-    @RequestMapping("destory")
-    public String destorySession(HttpServletRequest request){
-        request.getSession().invalidate();
-        return "login";
-    }
     @RequestMapping("textPut")
     public String textPut(){
-        return "textPut";
+        return "put/textPut";
     }
 
     @RequestMapping("soundPut")
     public String soundPut(){
-        return "soundPut";
+        return "put/soundPut";
     }
 
     @RequestMapping("moviePut")
     public String moviePut(){
-        return "moviePut";
+        return "put/moviePut";
     }
 }

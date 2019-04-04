@@ -96,4 +96,11 @@ public class LoginController {
 		String userName = map.get("name");
 		return userService.userInsert(email, password, userName);
 	}
+
+	@RequestMapping("loginOut")
+	public String logOut(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.removeAttribute("user");
+		return "new/loginN";
+	}
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/bootstrap-3.3.7/js/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/tool.js"></script>
+    <title>胶囊选择</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img src="/img/胶囊%20(2).png" style="margin-top: -0.975rem;display: inline-block;">
+                        <font style="">时光胶囊</font>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3" style="margin-top: 1.75rem; text-align: right;">
+                <span style="color: #5E5E5E;font-size: 1.55rem;cursor: pointer" id="name"
+                      th:text="${session.user.userName}"></span>
+                &nbsp;&nbsp;&nbsp;
+                <span style="color: #5E5E5E;font-size: 1.55rem;cursor: pointer" id="exit" onclick="loginOut()">退出</span>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</nav>
+<div class="row" style="margin-top: 170px">
+    <div class="col-md-3"></div>
+    <div class="col-md-2" style="cursor: pointer" id="text">
+        <div class="row" style="text-align: center">
+            <img src="/img/jiaonangred.png">
+        </div>
+        <div class="row" style="text-align: center">
+            <h3 style="color: #5E5E5E;font-size: 1.55rem;">富文本胶囊</h3>
+        </div>
+    </div>
+    <div class="col-md-2" style="cursor: pointer" id="sound">
+        <div class="row" style="text-align: center">
+            <img src="/img/jiaonanggreen.png">
+        </div>
+        <div class="row" style="text-align: center">
+            <h3 style="color: #5E5E5E;font-size: 1.55rem;">声音胶囊</h3>
+        </div>
+    </div>
+    <div class="col-md-2" style="cursor: pointer" id="movie">
+        <div class="row" style="text-align: center">
+            <img src="/img/jiaonangblue.png">
+        </div>
+        <div class="row" style="text-align: center">
+            <h3 style="color: #5E5E5E;font-size: 1.55rem;">视频胶囊</h3>
+        </div>
+    </div>
+</div>
+<div class="row" style="background-color:#B9DEF0;text-align: center;margin-top: 10.75rem;height: 100px;">
+    <!-- <div class="col-md-1"></div> -->
+    <div class="row" style="margin-top: 2.8875rem;">
+        <font style="font-size: 1.65rem;">|&nbsp;&nbsp;时光胶囊&nbsp;&nbsp;|&nbsp;&nbsp;重庆师范大学计算机与信息科学学院彭飞翔&nbsp;&nbsp;|&nbsp;&nbsp;2019</font>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#text").click(function () {
+            location.href = "/textPut";
+        })
+        $("#sound").click(function () {
+            location.href = "/soundPut";
+        })
+        $("#movie").click(function () {
+            location.href = "/moviePut";
+        })
+        // $("#exit").click(function () {
+        //     location.href = "/loginOut"
+        // })
+    })
+</script>
+</body>
+</html>

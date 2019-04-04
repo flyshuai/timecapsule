@@ -55,10 +55,10 @@ public class EmailTool {
         String context = "";
         if(name.equals(putUserName)){
             context = "<h1>时光胶囊</h1><h4>用户"+name+"你好，您于"+ map.get("capsuleUploadTime")+"埋下的胶囊"+capsuleName+
-                    "现已经可以打开，请凭借密钥<h4 style='color:red'>"+openPassword+"</font>,前往<a href='47.101.57.134:8080/toOpen'>时间胶囊</a>找寻过去。";
+                    "现已经可以打开，请凭借密钥<h4 style='color:red'>"+openPassword+"</h4>,前往<a href='localhost:8080/toOpen'>时间胶囊</a>找寻过去。";
         }else{
             context = "<h1>时光胶囊</h1><h4>"+name+"你好，用户"+putUserName+"于"+map.get("capsuleUploadTime")+"为您埋下的胶囊"+capsuleName+
-                    "现已经可以打开，请凭借密钥<h4 style='color:red'>"+openPassword+"</font>,前往<a href='47.101.57.134:8080/toOpen'>时间胶囊</a>查看。";
+                    "现已经可以打开，请凭借密钥<h4 style='color:red'>"+openPassword+"</h4>,前往<a href='localhost:8080/toOpen'>时间胶囊</a>查看。";
         }
         message.setText(context,true);
         mailSender.send(msg);

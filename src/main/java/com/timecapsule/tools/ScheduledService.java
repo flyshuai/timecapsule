@@ -20,7 +20,7 @@ public class ScheduledService {
     CapsuleMapper capsuleMapper;
     @Autowired
     EmailTool emailTool;
-    @Scheduled(cron = "0 36 09 * * ? ")
+    @Scheduled(cron = "0 49 10 * * ? ")
     public void scheduledScan() throws MessagingException {
         System.out.println("定时任务开始------扫描数据库");
         Date date = new Date();

@@ -10,3 +10,23 @@ function testEmail(email) {
         return true;
     }
 }
+
+//退出功能
+function loginOut() {
+    $.ajax({
+        url:'/loginOut',
+        success:function () {
+            console.log("成功退出");
+        }
+    })
+}
+
+//返回主页
+function toIndex() {
+    $.ajax({
+        url:'/toIndex',
+        success:function () {
+            // console.log("成功退出");
+        }
+    })
+}
