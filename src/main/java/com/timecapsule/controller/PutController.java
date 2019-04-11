@@ -3,30 +3,33 @@ package com.timecapsule.controller;
 import com.timecapsule.pojo.Capsule;
 import com.timecapsule.pojo.User;
 import com.timecapsule.service.CapsuleService;
-import com.timecapsule.tools.FileTool;
-import com.timecapsule.tools.JsonResult;
-import com.timecapsule.tools.OpenPassword;
+import com.timecapsule.tools.*;
+
+import org.apache.ibatis.transaction.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileNotFoundException;
+import javax.servlet.http.HttpSession;
+
+import java.beans.Transient;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 import java.util.Date;
-import java.util.Map;
+import java.util.List;
 
 
 @Controller
 public class PutController {
+
+    private String openPassword = "";
     @Autowired
     JsonResult jsonResult;
     @Autowired
@@ -41,7 +44,7 @@ public class PutController {
         User user = (User) request.getSession().getAttribute("user");
         MultipartHttpServletRequest mpRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = mpRequest.getFile("file");
-        String path = FileTool.uploadFile(file,user);
+        String path = FileTool.uploadFile(file, user);
         capsule.setCapsulePath(path);
         capsule.setCapsuleName(request.getParameter("capsuleName"));
         capsule.setName(request.getParameter("name"));
@@ -54,10 +57,11 @@ public class PutController {
         capsule.setCapsuleUploadTime(simpleDateFormat.format(date));
         capsule.setCapsuleTypeId(2);
         capsule.setOpenPassword(OpenPassword.buildOpenPassword());
+        openPassword = capsule.getOpenPassword();
         System.out.println(capsule.toString());
-        if (capsuleService.insertSoundCapsule(capsule)==1){
+        if (capsuleService.insertSoundCapsule(capsule) == 1) {
             jsonResult.setStatus(1);
-        }else {
+        } else {
             jsonResult.setStatus(0);
         }
         return jsonResult;
@@ -71,7 +75,7 @@ public class PutController {
         User user = (User) request.getSession().getAttribute("user");
         MultipartHttpServletRequest mpRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = mpRequest.getFile("file");
-        String path = FileTool.uploadFile(file,user);
+        String path = FileTool.uploadFile(file, user);
         capsule.setCapsulePath(path);
         capsule.setCapsuleName(request.getParameter("capsuleName"));
         capsule.setName(request.getParameter("name"));
@@ -85,9 +89,9 @@ public class PutController {
         capsule.setCapsuleTypeId(3);
         capsule.setOpenPassword(OpenPassword.buildOpenPassword());
         System.out.println(capsule.toString());
-        if (capsuleService.insertSoundCapsule(capsule)==1){
+        if (capsuleService.insertSoundCapsule(capsule) == 1) {
             jsonResult.setStatus(1);
-        }else {
+        } else {
             jsonResult.setStatus(0);
         }
         return jsonResult;
@@ -112,12 +116,29 @@ public class PutController {
         capsule.setCapsuleTypeId(1);
         capsule.setOpenPassword(OpenPassword.buildOpenPassword());
         System.out.println(capsule.toString());
-        if (capsuleService.insertSoundCapsule(capsule)==1){
+        if (capsuleService.insertSoundCapsule(capsule) == 1) {
             jsonResult.setStatus(1);
-        }else {
+        } else {
             jsonResult.setStatus(0);
         }
         return jsonResult;
     }
 
+
+    @PostMapping("/upload_many")
+    @ResponseBody
+//    @Transactional
+    public JsonResult UploadImages(@RequestParam(value = "file", required = false) MultipartFile[] files, MultipartHttpServletRequest request) {
+        if (files.length == 0) {
+            jsonResult.setMsg("图片为空！");
+            return jsonResult;
+        } else {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            System.out.println(openPassword);
+            String imgUrl = FileUpload.fileMany(files, StaticUtils.SAVE_URL, StaticUtils.FILE_TYPE, user.getUserId());
+            int i = capsuleService.insertSoundCapsuleImgs(openPassword, imgUrl);
+            return jsonResult;
+        }
+    }
 }

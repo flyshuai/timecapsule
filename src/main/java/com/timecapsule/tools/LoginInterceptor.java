@@ -12,7 +12,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("开始请求地址拦截");
+//        System.out.println("开始请求地址拦截");
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("user") != null) {
             return true;

@@ -47,4 +47,8 @@
             from capsule where capsuleOpenPassword = #{openPassword}
             AND capsuleOpenTime = #{date}
     </select>
+
+    <insert id="insertSoundCapsuleImgs">
+        insert into images values (#{openPassword},#{path})
+    </insert>
 </mapper>

@@ -29,4 +29,9 @@ public class CapsuleServiceImp implements CapsuleService {
         return capsuleMapper.findCapsuleByOpenPasswod(openPassword,date);
     }
 
+    @Override
+    public int insertSoundCapsuleImgs(String openPassword, String path) {
+        return capsuleMapper.insertSoundCapsuleImgs(openPassword,path);
+    }
+
 }

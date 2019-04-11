@@ -14,4 +14,6 @@ public interface CapsuleMapper {
     public List<Map<String,Object>> findTimedCapsule(String nowDate);
 
     public Capsule findCapsuleByOpenPasswod(String openPassword,String date);
+
+    public int insertSoundCapsuleImgs(String openPassword,String path);
 }
