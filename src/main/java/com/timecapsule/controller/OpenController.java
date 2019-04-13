@@ -32,6 +32,7 @@ public class OpenController {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Capsule capsule = capsuleService.findCapsuleByOpenPassword(openPassword, simpleDateFormat.format(date));
+        System.out.println(capsule);
         HttpSession session = request.getSession();
         if (capsule != null) {
             String path = capsule.getCapsulePath();
