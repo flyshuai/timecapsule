@@ -32,7 +32,7 @@ public class LoginController {
 		return "new/loginN";
 	}
 
-	@RequestMapping("toRegister")
+		@RequestMapping("toRegister")
 	public String register(){
 		return "new/register";
 	}

@@ -45,7 +45,7 @@
         select capsuleId,capsuleName,capsulePath,capsuleTypeId,capsuleUploadTime,
         DATE_FORMAT(capsuleOpenTime ,'%Y-%m-%d') AS capsuleOpenTime,capsuleOpenPassword,userNameCapsule,userId,email,putUserName
             from capsule where capsuleOpenPassword = #{openPassword}
-            AND capsuleOpenTime = #{date}
+            AND capsuleOpenTime &lt;= #{date}
     </select>
 
     <insert id="insertSoundCapsuleImgs">
