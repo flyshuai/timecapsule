@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>什么是时间胶囊</title>
+    <link href="/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/bootstrap-3.3.7/js/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/tool.js"></script>
+    <script src="/layui-v2.4.5/layui/layui.js"></script>
+    <link rel="stylesheet" href="/layui-v2.4.5/layui/css/layui.css"
+          media="all">
+    <script src="/js/open.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/toIndex">
+                        <img src="/img/胶囊%20(2).png" style="margin-top: -0.975rem;display: inline-block;">
+                        <font style="">时光胶囊</font>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3" style="margin-top: 1.75rem; text-align: right;">
+                <span style="color: #5E5E5E;font-size: 1.55rem;cursor: pointer" id="name"
+                      th:text="${session.user.userName}"></span>
+                &nbsp;&nbsp;&nbsp;
+                <span style="color: #5E5E5E;font-size: 1.55rem;cursor: pointer" id="exit" onclick="loginOut()">退出</span>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</nav>
+    <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md4"></div>
+            <h3>打开胶囊：</h3>
+            <input type="text" placeholder="密钥" style="height: 36px;width: 200px;padding-left: -10px" id="openPassword" name="openPassword"
+            th:value="aee3c3c1-3088-463e-ba06-bab2823df729">
+            <input type="submit" value="确认打开" class="layui-btn layui-btn-danger" id="open" onclick="openCapsule()">
+        </div>
+        <hr class="layui-bg-orange">
+        <div class="layui-row" style="margin-top: 20px">
+            <div class="layui-col-md-6">
+                <h3>帮助</h3>
+                <br>
+                <h4>欢迎使用时间胶囊😊</h4>
+                <hr class="layui-bg-orange">
+                <br>
+                <h4 style="color:red;">什么是时间胶囊?</h4>
+                “时间胶囊”是一个给未来的留言板，你可以为自己，朋友，爱人，家人，或者任何人留下你现在想对他们说的话，
+                想给他们听的声音，想给他们看的图片，想给他们看的视频，设置一个未来打开“时间胶囊”的时间，
+                这样他们就能在未来的某天通过网站发送的密码来这里打开“时间胶囊”,读到你想传达给他们的东西。
+                <br><br>
+                “时间胶囊”<br>
+                可以是一个预言、一篇日记<br>
+                可以是一段深情的话、一张充满爱的图片<br>
+                可以是一句牢骚，也可能是一句“我爱你”<br>
+                还可以是一段记录此刻视频<br>
+                <hr class="layui-bg-orange">
+                <h4 style="color:red;">添加一个时间胶囊?</h4>
+                如果你想留下一个“时间胶囊”，请点击主页上的“PUT 添加”，按照提示选取对应的胶囊进行添加。我们共有三种不同胶囊：<br>
+                <!--<font style="color:#93D1FF;">文本胶囊</font>可以添加富文本格式的文本与生动的表情，适合对未来的预言、留言、与跨越时光的信。<br>-->
+                <!--<font style="color:#c69500;">声音胶囊</font>可以将声音与图片一起添加，适合想要把声音与此刻的照片传递给未来<br>-->
+                <!--<font style="color:#00ff00;">视频胶囊</font>可以添加一段视频，适合记录此刻的时光与感动<br>-->
+                文本胶囊可以添加富文本格式的文本与生动的表情，适合对未来的预言、留言、与跨越时光的信。<br>
+                声音胶囊可以将声音与图片一起添加，适合想要把声音与此刻的照片传递给未来<br>
+                视频胶囊可以添加一段视频，适合记录此刻的时光与感动<br>
+                <hr class="layui-bg-orange">
+                <h4 style="color:red;">你已经有了一个“密码（KEY）”了么？</h4>
+                如果你已经得到朋友给你的KEY(网站会通过邮件发送),请点击主页上“OPEN 提取”，或者在上方的输入框中输入你得到的KEY提取,然后在某个时间打开朋友或者过去的自己留给现在的你的时间胶囊。<br>
+                <hr class="layui-bg-orange">
+                <h4 style="color:red;">担心隐私安全？</h4>
+                请放心，我们能确保您的信息保密，任何隐私不会受到威胁。打开胶囊所用的密钥保证在同一时空中的所有机器都是唯一的。后台管理员看到的密钥是加密后的密钥，就是说一旦添加，这个密钥只有到你设定的时间发送邮件后才会被看到。
+                <br>
+                <hr class="layui-bg-orange">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

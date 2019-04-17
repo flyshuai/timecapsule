@@ -34,8 +34,10 @@ public class PutController {
         //获取保存在session中的用户信息
         User user = (User) request.getSession().getAttribute("user");
         MultipartHttpServletRequest mpRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = mpRequest.getFile("file");
-        String path = FileTool.uploadFile(file, user);
+        MultipartFile [] file = new MultipartFile[1];
+        file[0] = mpRequest.getFile("file");
+//        String path = FileTool.uploadFile(file, user);
+        String path = FileUpload.fileMany(file,StaticUtils.SAVE_URL,null,user.getUserId());
         capsule.setCapsulePath(path);
         capsule.setCapsuleName(request.getParameter("capsuleName"));
         capsule.setName(request.getParameter("name"));
@@ -65,8 +67,10 @@ public class PutController {
         //获取保存在session中的用户信息
         User user = (User) request.getSession().getAttribute("user");
         MultipartHttpServletRequest mpRequest = (MultipartHttpServletRequest) request;
-        MultipartFile file = mpRequest.getFile("file");
-        String path = FileTool.uploadFile(file, user);
+        MultipartFile [] file = new MultipartFile[1];
+        file[0] = mpRequest.getFile("file");
+//        String path = FileTool.uploadFile(file, user);
+        String path = FileUpload.fileMany(file,StaticUtils.SAVE_URL,null,user.getUserId());
         capsule.setCapsulePath(path);
         capsule.setCapsuleName(request.getParameter("capsuleName"));
         capsule.setName(request.getParameter("name"));

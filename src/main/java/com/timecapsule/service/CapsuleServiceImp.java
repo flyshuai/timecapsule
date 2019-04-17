@@ -5,6 +5,7 @@ import com.timecapsule.pojo.Capsule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service("CapsuleService")
@@ -32,6 +33,11 @@ public class CapsuleServiceImp implements CapsuleService {
     @Override
     public int insertSoundCapsuleImgs(String openPassword, String path) {
         return capsuleMapper.insertSoundCapsuleImgs(openPassword,path);
+    }
+
+    @Override
+    public List<Map<String, Object>> findImagesInSoundCapsule(String openPassword) {
+        return capsuleMapper.findImagesInSoundCapsule(openPassword);
     }
 
 }

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class OpenController {
@@ -42,15 +44,17 @@ public class OpenController {
                 return "open/openText";
             }
             if (type == 2) {
-                String [] str = capsule.getCapsulePath().split("static");
-                System.out.println(str[0]+"=="+str[1]);
-                session.setAttribute("path",str[1]);
+                String str = capsule.getCapsulePath();
+                List<Map<String,Object>> list = capsuleService.findImagesInSoundCapsule(capsule.getOpenPassword());
+                System.out.println(list);
+                System.out.println(str);
+                session.setAttribute("path",str);
                 return "open/openSound";
             }
             if (type == 3) {
-                String [] str = capsule.getCapsulePath().split("static");
-                System.out.println(str[0]+"=="+str[1]);
-                session.setAttribute("path",str[1]);
+                String str = capsule.getCapsulePath();
+                System.out.println(str);
+                session.setAttribute("path","/upload"+str);
                 return "open/openMovie";
             }
         }

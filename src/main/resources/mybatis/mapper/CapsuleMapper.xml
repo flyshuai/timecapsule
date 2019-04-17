@@ -51,4 +51,8 @@
     <insert id="insertSoundCapsuleImgs">
         insert into images values (#{openPassword},#{path})
     </insert>
+
+    <select id="findImagesInSoundCapsule" resultType="map">
+        select * from images where openPassword = #{openPassword}
+    </select>
 </mapper>

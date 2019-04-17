@@ -18,7 +18,7 @@ public class FileUpload {
      */
     public static String fileMany(MultipartFile[] files , String saveUrl, String fileType,int userId){
         List<String> picUrl = new LinkedList<>();
-        String newUrl = saveUrl +"/"+userId+ "/pic/"+new Date()+"/";
+        String newUrl = saveUrl +"/"+userId+ "/"+new Date()+"/";
         File saveDir = new File(newUrl);
         if(!saveDir.exists()){
             saveDir.mkdirs();
