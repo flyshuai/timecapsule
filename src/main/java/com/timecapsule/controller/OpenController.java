@@ -44,17 +44,19 @@ public class OpenController {
                 return "open/openText";
             }
             if (type == 2) {
-                String str = capsule.getCapsulePath();
+                //切割路径字符串
+                String [] str = capsule.getCapsulePath().split("Users");
+                System.out.println(str[0]+"===="+str[1]);
                 List<Map<String,Object>> list = capsuleService.findImagesInSoundCapsule(capsule.getOpenPassword());
                 System.out.println(list);
-                System.out.println(str);
-                session.setAttribute("path",str);
+                session.setAttribute("path",str[1]);
+                session.setAttribute("ImagesPath",list);
                 return "open/openSound";
             }
             if (type == 3) {
-                String str = capsule.getCapsulePath();
-                System.out.println(str);
-                session.setAttribute("path","/upload"+str);
+                String [] str = capsule.getCapsulePath().split("Users");
+                System.out.println(str[0]+"===="+str[1]);
+                session.setAttribute("path","/upload"+str[1]);
                 return "open/openMovie";
             }
         }

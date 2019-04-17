@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>声音开启</title>
@@ -11,12 +11,10 @@
 
 <div class="layui-carousel" id="test1">
     <div carousel-item>
-        <div></div>
+        <div><img th:src="${session.ImagesPath.get(0).get('path')}"></div>
     </div>
 </div>
 <!-- 条目中可以是任意内容，如：<img src=""> -->
-
-<script src="/static/build/layui.js"></script>
 <script>
     layui.use('carousel', function(){
         var carousel = layui.carousel;
