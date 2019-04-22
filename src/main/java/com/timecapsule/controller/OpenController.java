@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -47,9 +48,14 @@ public class OpenController {
                 //切割路径字符串
                 String [] str = capsule.getCapsulePath().split("Users");
                 System.out.println(str[0]+"===="+str[1]);
-                List<Map<String,Object>> list = capsuleService.findImagesInSoundCapsule(capsule.getOpenPassword());
-                System.out.println(list);
-                session.setAttribute("path",str[1]);
+                List<Map<String,Object>> tempList = capsuleService.findImagesInSoundCapsule(capsule.getOpenPassword());
+                List<String> list = new ArrayList<>();
+                for (int i=0;i<tempList.size();i++){
+                    String [] tempStrArray = tempList.get(i).get("path").toString().split("Users");
+                    System.out.println(tempStrArray[1]);
+                    list.add("/upload"+tempStrArray[1]);
+                }
+                session.setAttribute("path","/upload"+str[1]);
                 session.setAttribute("ImagesPath",list);
                 return "open/openSound";
             }
