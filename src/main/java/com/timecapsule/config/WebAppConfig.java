@@ -26,6 +26,6 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         // 设置拦截的路径、不拦截的路径、优先级等等
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/*").
-                excludePathPatterns("/toIndex","/toRegister","/toLoginN","/login","/register","/loginOut");
+                excludePathPatterns("/toIndex","/toRegister","/toLoginN","/login","/register","/loginOut","/toOpen","/toExplain","/open");
     }
 }

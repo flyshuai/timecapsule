@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ViewController {
 
-    @RequestMapping("/explain")
+    @RequestMapping("toExplain")
     public String explain(){
-        return "/explain";
+        return "timecapsuleExplain";
+    }
+
+    @RequestMapping("toAdminIndex")
+    public String toAdminIndex(){
+        return "admin/index";
     }
 }

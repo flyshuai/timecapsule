@@ -47,7 +47,6 @@ public class OpenController {
             if (type == 2) {
                 //切割路径字符串
                 String [] str = capsule.getCapsulePath().split("Users");
-                System.out.println(str[0]+"===="+str[1]);
                 List<Map<String,Object>> tempList = capsuleService.findImagesInSoundCapsule(capsule.getOpenPassword());
                 List<String> list = new ArrayList<>();
                 for (int i=0;i<tempList.size();i++){
@@ -61,7 +60,6 @@ public class OpenController {
             }
             if (type == 3) {
                 String [] str = capsule.getCapsulePath().split("Users");
-                System.out.println(str[0]+"===="+str[1]);
                 session.setAttribute("path","/upload"+str[1]);
                 return "open/openMovie";
             }

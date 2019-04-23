@@ -69,7 +69,6 @@ public class PutController {
         MultipartHttpServletRequest mpRequest = (MultipartHttpServletRequest) request;
         MultipartFile [] file = new MultipartFile[1];
         file[0] = mpRequest.getFile("file");
-//        String path = FileTool.uploadFile(file, user);
         String path = FileUpload.fileMany(file,StaticUtils.SAVE_URL,null,user.getUserId());
         capsule.setCapsulePath(path);
         capsule.setCapsuleName(request.getParameter("capsuleName"));
@@ -130,7 +129,6 @@ public class PutController {
         } else {
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            System.out.println(openPassword);
             String imgUrl = FileUpload.fileMany(files, StaticUtils.SAVE_URL, StaticUtils.FILE_TYPE, user.getUserId());
             int i = capsuleService.insertSoundCapsuleImgs(openPassword, imgUrl);
             return jsonResult;
