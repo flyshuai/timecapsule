@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace是命名空间，是mapper接口的全路径-->
+<mapper namespace="com.timecapsule.mapper.AdminMapper">
+    <select id="findAdminByIdAndPassword" resultType="map">
+        select * from admin where adminAccount = #{userAccount} and adminPassword = #{password}
+    </select>
+</mapper>

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@Configuration
+//@Configuration
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Value("${file.staticAccessPath}")
@@ -26,6 +26,6 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         // 设置拦截的路径、不拦截的路径、优先级等等
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/*").
-                excludePathPatterns("/toIndex","/toRegister","/toLoginN","/login","/register","/loginOut","/toOpen","/toExplain","/open");
+                excludePathPatterns("/toIndex","/toRegister","/toLoginN","/login","/register","/loginOut","/toOpen","/toExplain","/open","/toAdminIndex");
     }
 }

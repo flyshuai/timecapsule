@@ -1,7 +1,8 @@
-package com.timecapsule.service;
+package com.timecapsule.service.impl;
 
 import com.timecapsule.mapper.CapsuleMapper;
 import com.timecapsule.pojo.Capsule;
+import com.timecapsule.service.CapsuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

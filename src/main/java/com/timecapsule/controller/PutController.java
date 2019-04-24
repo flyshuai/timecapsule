@@ -122,7 +122,8 @@ public class PutController {
     @PostMapping("/upload_many")
     @ResponseBody
 //    @Transactional
-    public JsonResult UploadImages(@RequestParam(value = "file", required = false) MultipartFile[] files, MultipartHttpServletRequest request) {
+    public JsonResult UploadImages(@RequestParam(value = "file", required = false) MultipartFile[] files,
+                                   MultipartHttpServletRequest request) {
         if (files.length == 0) {
             jsonResult.setMsg("图片为空！");
             return jsonResult;

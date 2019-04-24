@@ -1,14 +1,15 @@
-package com.timecapsule.service;
+package com.timecapsule.service.impl;
 
 import com.timecapsule.mapper.UserMapper;
 import com.timecapsule.pojo.User;
+import com.timecapsule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service("UserService")
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 
     @Autowired
     UserMapper userMapper;
