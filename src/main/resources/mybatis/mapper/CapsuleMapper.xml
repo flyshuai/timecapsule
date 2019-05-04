@@ -55,4 +55,7 @@
     <select id="findImagesInSoundCapsule" resultType="map">
         select * from images where openPassword = #{openPassword}
     </select>
+    <select id="selectAllCapsule">
+        
+    </select>
 </mapper>

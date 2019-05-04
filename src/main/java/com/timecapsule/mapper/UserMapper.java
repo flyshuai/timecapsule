@@ -9,8 +9,15 @@ import java.util.Map;
 
 @Repository
 public interface UserMapper {
-    public int insert(@Param("email") String email,@Param("password") String password,@Param("userName")String userName);
-    public User findUserByEmailAndPassword(@Param("email") String email,@Param("password") String password);
-    public List<Map<String,Object>> find(int id);
+    public int insertUser(User user);
+
+    public User findUserByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
     public User findUserByEmail(@Param("email") String email);
+
+    public List<User> selectAllUser(String start, String end, String email);
+
+    public Integer selectAllUserCount(String start, String end, String email);
+
+    public Integer delUserByUserId(Integer userId);
 }

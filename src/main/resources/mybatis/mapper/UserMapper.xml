@@ -9,19 +9,44 @@
     <!--<id property="name" column="username"></id>-->
     <!--</resultMap>-->
 
-
-    <insert id="insert" >
-        insert into user(userName,email,password) values(#{userName},#{email},#{password})
+    <insert id="insertUser" parameterType="User">
+        insert into user(userName,email,password,registerTime) values(#{userName},#{email},#{password},#{registerTime})
     </insert>
     <select id="findUserByEmailAndPassword" resultType="User">
         select userId,email,password,userName from USER where email = #{email} and password = #{password}
     </select>
 
-    <select id="find" resultType="map">
-        select * from type ;
-    </select>
-
     <select id="findUserByEmail" resultType="User">
         select userId,email,password,userName from USER where email = #{email}
     </select>
+
+    <select id="selectAllUser" resultType="User">
+        select userId,email,userName,password,registerTime,accountStatus from user where accountStatus = 1
+        <if test="email != null and email != ''">
+            and email = #{email}
+        </if>
+        <if test="start != null and start != ''">
+            and  #{start} &lt;= registerTime
+        </if>
+        <if test="end != null and end != ''">
+            and registerTime &lt;= #{end}
+        </if>
+    </select>
+
+    <select id="selectAllUserCount" resultType="int">
+        select count(*) from user where accountStatus = 1
+        <if test="email != null and email != ''">
+            and email = #{email}
+        </if>
+        <if test="start != null and start != ''">
+            and  #{start} &lt;= registerTime
+        </if>
+        <if test="end != null and end != ''">
+            and registerTime &lt;= #{end}
+        </if>
+    </select>
+
+    <update id="delUserByUserId">
+       update user set accountStatus = 0 where userId = #{userId}
+    </update>
 </mapper>
